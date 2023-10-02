@@ -1,1 +1,23 @@
-<p>allataink works!</p>
+<!-- {{allatok|json}} -->
+
+<h1 class="display-1 my-5">Az állatkert lakói</h1>
+
+<div class="row my-3">
+    <div *ngFor="let oszlop of oszlopok" class="col fw-bold">
+        {{oszlop['text']}}
+    </div>
+</div>
+
+<div *ngFor="let allat of allatok" class="row my-2">
+    <div *ngFor="let oszlop of oszlopok" class="col ">
+        
+        <ng-container *ngIf="oszlop.key=='gondozo'|| oszlop.key=='helye';else nemlakhely">
+              {{keresElnevezes(oszlop.key,allat.helye, allat.gondozo)}}  
+        </ng-container>
+
+        <ng-template #nemlakhely>
+            {{allat[oszlop.key]}}
+        </ng-template>
+        
+    </div>
+</div>

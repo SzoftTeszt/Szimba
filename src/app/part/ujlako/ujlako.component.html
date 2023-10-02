@@ -1,1 +1,48 @@
-<p>ujlako works!</p>
+{{allat|json}}
+
+<div class="card">    
+    <div class="card-body">
+      <h5 class="card-title">Új lakó felvétele</h5>
+      <div class="card-text">
+      
+        <div class="form-floating mb-3">
+            <input [(ngModel)]="allat.nev" type="text" class="form-control" id="nav">
+            <label for="nev">Név</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input [(ngModel)]="allat.faj" type="text" class="form-control" id="faj">
+            <label for="faj">Faj</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input [(ngModel)]="allat.erkezes" type="date" class="form-control" id="erkezes">
+            <label for="erkezes">Érkezes</label>
+        </div>
+
+        <div class="form-floating">
+            <select [(ngModel)]="allat.helye" class="form-select" id="floatingSelect" aria-label="Floating label select example">
+              
+              <option *ngFor="let lakohely of lakohelyek" [value]="lakohely.id">
+                {{lakohely.lakhely}}
+             </option>
+        
+            </select>
+            <label for="floatingSelect">Helye az állatkertben</label>
+        </div>
+
+        <div class="form-floating">
+            <select [(ngModel)]="allat.gondozo" class="form-select" id="floatingSelectg" aria-label="Floating label select example">
+              
+              <option *ngFor="let gondozo of gondozok" [value]="gondozo.id">
+                {{gondozo.nev}}
+             </option>
+        
+            </select>
+            <label for="floatingSelectg">Gondozó</label>
+        </div>
+
+    </div>
+    <button (click)="kuldApi()" type="button" class="btn btn-primary">Lakó mentése</button>
+    </div>
+  </div>
